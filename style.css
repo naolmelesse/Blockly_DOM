@@ -1,0 +1,50 @@
+body{
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    margin: 2em;
+    margin-left: 0;
+    width: 90%;
+}
+
+.title{
+    background-color: #e0dada;
+    padding: 1.5em;
+    border: 0.1em solid #000;
+    border-collapse: collapse;
+    display: flex;
+    font-size: 1.1em;
+}
+
+.blocks-viewer{
+    width: 70%;
+
+}
+
+.code-column{
+    text-align: center;
+    align-items: center;
+    width: 30%;
+}
+
+.run_javascript_icon{
+    position: absolute;
+    cursor: pointer;
+    width: 3.5em;
+    color: blue;
+    left: 75%;
+    top: 70%;
+    opacity: 0.7;
+}
+
+.run_javascript_icon:hover{
+    opacity: 1;
+}

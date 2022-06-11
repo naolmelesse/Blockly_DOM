@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockly-DOM</title>
+
+    <script src="./node_modules/blockly/blockly_compressed.js"></script>
+    <script src="./node_modules/blockly/blocks_compressed.js"></script>
+    <script src="./node_modules/blockly/javascript_compressed.js"></script>
+    <script src="msg/js/en.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/ef1a71d318.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div>
+            <div class="title">
+                <div style="flex: left;">Blocks</div>
+                <div style="flex:2;">Viewer</div>
+            </div>
+            <div class="blockly-editor blocks-viewer">
+                <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
+            </div>
+            <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+                <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+                    <block type="controls_if"></block>
+                    <block type="logic_compare"></block>
+                    <block type="logic_operation"></block>
+                    <block type="logic_negate"></block>
+                    <block type="logic_boolean"></block>
+                    <block type="logic_null"></block>
+                    <block type="logic_ternary"></block>
+                </category>
+                </category>
+                <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+                  <block type="controls_repeat_ext">
+                    <value name="TIMES">
+                      <block type="math_number">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                  <block type="controls_whileUntil"></block>
+                  <block type="controls_for">
+                    <field name="VAR">i</field>
+                    <value name="FROM">
+                      <block type="math_number">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="TO">
+                      <block type="math_number">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                    <value name="BY">
+                      <block type="math_number">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                  <block type="controls_forEach"></block>
+                  <block type="controls_flow_statements"></block>
+                </category>
+                <category name="Math" colour="%{BKY_MATH_HUE}">
+                  <block type="math_number">
+                    <field name="NUM">123</field>
+                  </block>
+                  <block type="math_arithmetic"></block>
+                  <block type="math_single"></block>
+                  <block type="math_trig"></block>
+                  <block type="math_constant"></block>
+                  <block type="math_number_property"></block>
+                  <block type="math_round"></block>
+                  <block type="math_on_list"></block>
+                  <block type="math_modulo"></block>
+                  <block type="math_constrain">
+                    <value name="LOW">
+                      <block type="math_number">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="HIGH">
+                      <block type="math_number">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                  <block type="math_random_int">
+                    <value name="FROM">
+                      <block type="math_number">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="TO">
+                      <block type="math_number">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                  <block type="math_random_float"></block>
+                  <block type="math_atan2"></block>
+                </category>
+                <category name="Text" categorystyle="text_category">
+                    <block type="text"></block>
+                    <block type="text_multiline"></block>
+                    <block type="text_join"></block>
+                    <block type="text_append">
+                      <value name="TEXT">
+                        <shadow type="text"></shadow>
+                      </value>
+                    </block>
+                    <block type="text_length">
+                      <value name="VALUE">
+                        <shadow type="text">
+                          <field name="TEXT">abc</field>
+                        </shadow>
+                      </value>
+                    </block>
+                    <block type="text_isEmpty">
+                      <value name="VALUE">
+                        <shadow type="text">
+                          <field name="TEXT"></field>
+                        </shadow>
+                      </value>
+                    </block>
+                    <block type="text_indexOf">
+                      <value name="VALUE">
+                        <block type="variables_get">
+                          <field name="VAR">text</field>
+                        </block>
+                      </value>
+                      <value name="FIND">
+                        <shadow type="text">
+                          <field name="TEXT">abc</field>
+                        </shadow>
+                      </value>
+                    </block>
+                    <block type="text_charAt">
+                      <value name="VALUE">
+                        <block type="variables_get">
+                          <field name="VAR">text</field>
+                        </block>
+                      </value>
+                    </block>
+                    <block type="text_getSubstring">
+                      <value name="STRING">
+                        <block type="variables_get">
+                          <field name="VAR">text</field>
+                        </block>
+                      </value>
+                    </block>
+                    <block type="text_changeCase">
+                      <value name="TEXT">
+                        <shadow type="text">
+                          <field name="TEXT">abc</field>
+                        </shadow>
+                      </value>
+                    </block>
+                    <block type="text_trim">
+                      <value name="TEXT">
+                        <shadow type="text">
+                          <field name="TEXT">abc</field>
+                        </shadow>
+                      </value>
+                    </block>
+                    <block type="text_count">
+                      <value name="SUB">
+                        <shadow type="text"></shadow>
+                      </value>
+                      <value name="TEXT">
+                        <shadow type="text"></shadow>
+                      </value>
+                    </block>
+                    <block type="text_replace">
+                      <value name="FROM">
+                        <shadow type="text"></shadow>
+                      </value>
+                      <value name="TO">
+                        <shadow type="text"></shadow>
+                      </value>
+                      <value name="TEXT">
+                        <shadow type="text"></shadow>
+                      </value>
+                    </block>
+                    <block type="text_reverse">
+                      <value name="TEXT">
+                        <shadow type="text"></shadow>
+                      </value>
+                    </block>
+                    <label text="Input/Output:" web-class="ioLabel"></label>
+                    <block type="text_print">
+                      <value name="TEXT">
+                        <shadow type="text">
+                          <field name="TEXT">abc</field>
+                        </shadow>
+                      </value>
+                    </block>
+                    <block type="text_prompt_ext">
+                      <value name="TEXT">
+                        <shadow type="text">
+                          <field name="TEXT">abc</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </category>
+                <category name="Lists" colour="%{BKY_LISTS_HUE}">
+                  <block type="lists_create_empty"></block>
+                  <block type="lists_create_with"></block>
+                  <block type="lists_repeat">
+                    <value name="NUM">
+                      <block type="math_number">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                  <block type="lists_length"></block>
+                  <block type="lists_isEmpty"></block>
+                  <block type="lists_indexOf"></block>
+                  <block type="lists_getIndex"></block>
+                  <block type="lists_setIndex"></block>
+                </category>
+                <category name="Colour" colour="%{BKY_COLOUR_HUE}">
+                    <block type="colour_picker"></block>
+                    <block type="colour_random"></block>
+                    <block type="colour_rgb"></block>
+                    <block type="colour_blend"></block>
+                    
+                </category>
+                <block type="div"></block>
+                <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
+                    
+                </category>
+                <category name="Functions" custom="PROCEDURE" colour="%{BKY_PROCEDURES_HUE}">
+                </category>
+                <category name="DOM_function" custom="" colour="315">
+                  <block type="dom_innerhtml"></block>
+                  <block type="dom_getelementid"></block>
+                  <block type="dom_getelementsbyclassname"></block>
+                  <block type="dom_getelementsbytagname"></block>
+                  <block type="dom_getattribute"></block>
+                  <block type="dom_setattribute"></block>
+                  <block type="dom_node"></block>
+                  <block type="dom_createelement"></block>
+                  <block type="dom_appendchild"></block>
+                  <block type="dom_removechild"></block>
+                  <block type="dom_forms"></block>
+                  <block type="dom_addeventlistener"></block>
+                </category>
+            </category>
+              </xml>
+              
+              
+        </div>
+        <div class="code-column">
+            <div class="title">Code</div>
+            <p>JavaScript code:</p>
+            <p id="textarea"></p>
+            
+
+            <!-- <p>Execution ouptut:</p>
+            <div id="executed_code_display">
+
+            </div> -->
+            <p>
+                <svg onclick="runCode()" class="run_javascript_icon"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM176 168V344C176 352.7 180.7 360.7 188.3 364.9C195.8 369.2 205.1 369 212.5 364.5L356.5 276.5C363.6 272.1 368 264.4 368 256C368 247.6 363.6 239.9 356.5 235.5L212.5 147.5C205.1 142.1 195.8 142.8 188.3 147.1C180.7 151.3 176 159.3 176 168V168z"/></svg></>
+                
+            </p>
+
+        </div>
+    </div>
+    <script src="https://unpkg.com/blockly"></script>
+    <script src="scripts/main.js" ></script>
+    <script src="./scripts/DOM_functions.js"></script>
+    <script src="./scripts/DOM_functions_javascript_generator.js"></script>
+   
+</body>
+</html>
